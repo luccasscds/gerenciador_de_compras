@@ -45,7 +45,7 @@
               <th class="tabtext"><span>Quantidade:</span></th>
               <th class="tabinp">
                 <select class="form-control" v-model="newQuant" id="new-produto"><br>
-                <option disabled value="">Escolha um item</option>
+                <option disabled value="">Quantidade de itens</option>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -70,8 +70,8 @@
    
     <div>
       <table class="lista" align="center">
-        <tr class="contlist">
-          <th colspan="6">LISTA DE COMPRAS REALIZADAS</th>
+        <tr>
+          <th  class="titlist" colspan="6">LISTA DE COMPRAS REALIZADAS</th>
         </tr>
         <tr class="contlist">
           <th>Produto</th>
@@ -105,7 +105,7 @@
         newProduto: '',
         newLoja: '',
         newPreco: null,
-        newQuant: 1,
+        newQuant: '',
         valorTotal: 0,
         compras: []
       }
@@ -123,7 +123,7 @@
         this.newProduto = ''
         this.newLoja = ''
         this.newPreco = null
-        this.newQuant = 1
+        this.newQuant = null
       },
       removeProduto: function(produto,total) {var del = this.compras.indexOf(produto)
           const Swalok = Swal.mixin({
@@ -153,7 +153,9 @@
           })
         },
       calcularGastos(){
-        this.valorTotal = parseFloat((this.newPreco * this.newQuant + this.valorTotal).toFixed(2))
+        if(this.newProduto != '' && this.newLoja != ''){
+          this.valorTotal = parseFloat((this.newPreco * this.newQuant + this.valorTotal).toFixed(2))
+        }
       }
     } 
   }
