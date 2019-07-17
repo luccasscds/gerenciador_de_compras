@@ -14,7 +14,6 @@
     </div>
      <div id="icons">
         <img id="icon1" src="../assets/calc.png"><font color="#34A8DB">R$ {{valorTotal}}</font>
-        <!--<img id="icon2" src="../../public/imagens/shop.png"><font color="#34A8DB"></font>-->
       </div>
     <div class="caixa">
       <h2>Adicione suas compras:</h2>
@@ -44,19 +43,13 @@
             <tr>
               <th class="tabtext"><span>Quantidade:</span></th>
               <th class="tabinp">
-                <select class="form-control" v-model="newQuant" id="new-produto"><br>
-                <option disabled value="">Quantidade de itens</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-              </select>
+                <input 
+                v-model="newQuant" 
+                class="form-control"
+                id="new-produto" 
+                type="number" 
+                placeholder="Quantidade de itens" 
+                 required>
               </th>
             </tr>
           </table>
@@ -120,6 +113,11 @@
     },
     methods: {
       addProduto: function () {
+      
+        if (this.newQuant == ""){
+          this.newQuant = 1
+        }
+        
         this.compras.push({
           id: this.idCompra++,
           title: this.newProduto,
@@ -161,6 +159,11 @@
           })
         },
       calcularGastos(){
+      
+        if (this.newQuant == ""){
+          this.newQuant = 1
+        }
+      
         if(this.newProduto != '' && this.newLoja != ''){
           this.valorTotal = parseFloat((this.newPreco * this.newQuant + this.valorTotal).toFixed(2))
         }
