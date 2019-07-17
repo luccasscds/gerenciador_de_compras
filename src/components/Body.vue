@@ -107,7 +107,7 @@
         newLoja: '',
         newPreco: null,
         newQuant: '',
-        valorTotal: 0,
+        valorTotal: 0, 
         compras: []
       }
     },
