@@ -49,7 +49,7 @@
                 id="new-produto" 
                 type="number" 
                 placeholder="Quantidade de itens" 
-                 required>
+                min="0" max="100000" required>
               </th>
             </tr>
           </table>
