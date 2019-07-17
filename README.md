@@ -1,4 +1,4 @@
-# gerenciador_de_compras2
+# gerenciador_de_compras
 
 ## Project setup
 ```
