@@ -4,7 +4,7 @@
       <h1>Gerenciador de Compras</h1>
 
       <ul>
-        <li><a href="../App.vue">Home</a></li>
+        <li><a href="../index.html">Home</a></li>
         <div style="float:right">
           <input id="search" type="text" v-model="search" placeholder="pesquise aqui...">
         </div>
