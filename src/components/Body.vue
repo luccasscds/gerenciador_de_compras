@@ -5,9 +5,9 @@
 
       <ul>
         <li><a href="../App.vue">Home</a></li>
-        <!--<div style="float:right">
-          <input id="search" type="text" placeholder="pesquise aqui...">
-        </div>-->
+        <div style="float:right">
+          <input id="search" type="text" v-model="search" placeholder="pesquise aqui...">
+        </div>
         
       </ul>
       
@@ -81,7 +81,7 @@
           <th>Preço Total</th>
           <th></th>
         </tr>
-        <tr class="contlist" v-for="produto in compras" :key="produto.id">
+        <tr class="contlist" v-for="produto in filtersearch" :key="produto.id">
           <th>{{produto.title}}</th>
           <th>{{produto.loja}}</th>
           <th>{{produto.preco}}</th>
@@ -101,6 +101,7 @@
     name: 'Body',
     data(){
       return {
+        search: '',
         idCompra: 1,
         newProduto: '',
         newLoja: '',
@@ -108,6 +109,13 @@
         newQuant: '',
         valorTotal: 0,
         compras: []
+      }
+    },
+    computed: {
+      filtersearch: function () {
+        return this.compras.filter((produto) => {
+          return produto.title.toLowerCase().match(this.search)
+        })
       }
     },
     methods: {
